@@ -40,7 +40,7 @@ public class ProducerRestController {
     @GetMapping("/cashback/calc")
     public ResponseEntity<ProcessResult> calc(@RequestParam(value = "userId") Long clientId,
                                               @RequestParam(value = "orderId") Long orderId) {
-
+//
         CashBack cashBack = new CashBack();
         ProcessResult processResult = new ProcessResult();
         cashBack.setClient(clientRepository.findById(clientId).get());
