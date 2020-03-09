@@ -35,6 +35,7 @@ public class ProducerRestController {
     @Autowired
     ClientRepository clientRepository;
 
+    @Autowired
     ProccesResultRepository proccesResultRepository;
 
     @GetMapping("/cashback/calc")

@@ -2,19 +2,20 @@ package com.test.spring_test.dto;
 
 import com.test.spring_test.Status;
 import com.test.spring_test.model.CashBack;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.UUID;
 
 
 @Data
 @Table
 @Entity
 public class ProcessResult {
+
+
     @Id
-    @GeneratedValue
-    private Long id;
+    private UUID id = c();
 
     @Column(name = "status")
     private Status status;
@@ -26,4 +27,8 @@ public class ProcessResult {
     })
     private CashBack cashBack;
 
+    private UUID c(){
+        UUID uuid= UUID.randomUUID();
+        return uuid;
+    }
 }
