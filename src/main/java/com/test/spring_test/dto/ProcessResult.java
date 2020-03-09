@@ -15,7 +15,8 @@ public class ProcessResult {
 
 
     @Id
-    private UUID id = c();
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column(name = "status")
     private Status status;

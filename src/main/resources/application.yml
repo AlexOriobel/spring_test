@@ -12,4 +12,6 @@ spring:
         value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
      producer:
         key-serializer: org.springframework.kafka.support.serializer.JsonSerializer
-        value-serializer: org.springframework.kafka.support.serializer.JsonSerialier
+        value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+        acks: 1
+        reteies: 3

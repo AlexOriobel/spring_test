@@ -46,8 +46,9 @@ public class ProducerRestController {
         ProcessResult processResult = new ProcessResult();
         cashBack.setClient(clientRepository.findById(clientId).get());
         cashBack.setOrderS(ordersRepository.findById(orderId).get());
-        cashBack.setProcessResult(processResult);
-        cashBack.getProcessResult().setStatus(Status.IN_PROGRESS);
+        processResult.setStatus(Status.IN_PROGRESS);
+        processResult.setCashBack(cashBack);
+        proccesResultRepository.save(processResult);
         this.producer.sendMessage(cashBack);
         return new ResponseEntity<>(cashBack.getProcessResult(), HttpStatus.OK);
 

@@ -5,14 +5,14 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.UUID;
 
 @Table
 @Data
 @Entity
 public class CashBack {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private UUID id = c();
 
     @Column(name = "money")
     private Double money;
@@ -32,4 +32,7 @@ public class CashBack {
     @JoinColumn(name = "result")
     private ProcessResult processResult;
 
+    private UUID c(){
+        return UUID.randomUUID();
+    }
 }
