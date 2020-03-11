@@ -12,28 +12,25 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/client")
 public class ClientRestController {
 
-    private final ClientRepository clientRepository;
+	private final ClientRepository clientRepository;
 
-    @GetMapping // Get all clients
-    public ResponseEntity<Iterable<Client>> getClientLst() {
-        return new ResponseEntity<>(clientRepository.findAll()
-                , HttpStatus.OK);
-    }
+	@GetMapping // Get all clients
+	public ResponseEntity<Iterable<Client>> getClientLst() {
+		return new ResponseEntity<>(clientRepository.findAll(), HttpStatus.OK);
+	}
 
-    @GetMapping("{id}") // Get client by id
-    public ResponseEntity<Client> getClient(@PathVariable Long id) {
-        return new ResponseEntity<>(clientRepository.findById(id)
-                .orElseThrow(RuntimeException::new), HttpStatus.OK);
-    }
+	@GetMapping("{id}") // Get client by id
+	public ResponseEntity<Client> getClient(@PathVariable Long id) {
+		return new ResponseEntity<>(clientRepository.findById(id)
+													.orElseThrow(RuntimeException::new), HttpStatus.OK);
+	}
 
-    // POST add new Client
-    @PostMapping
-    public ResponseEntity<Client> creatClient(@RequestBody Client client) {
-        Client saveClient = clientRepository.save(client);
-        return new ResponseEntity<>(saveClient, HttpStatus.CREATED);
-    }
-
-
+	// POST add new Client
+	@PostMapping
+	public ResponseEntity<Client> creatClient(@RequestBody Client client) {
+		Client saveClient = clientRepository.save(client);
+		return new ResponseEntity<>(saveClient, HttpStatus.CREATED);
+	}
 
 
 }

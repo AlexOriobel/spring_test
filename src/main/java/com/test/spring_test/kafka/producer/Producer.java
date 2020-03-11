@@ -1,7 +1,9 @@
 package com.test.spring_test.kafka.producer;
 
+import com.test.spring_test.dto.CashBackDto;
 import com.test.spring_test.model.CashBack;
 import com.test.spring_test.model.OrderS;
+import lombok.extern.slf4j.Slf4j;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,28 +17,31 @@ import org.springframework.util.concurrent.ListenableFutureCallback;
 
 
 @Service
+@Slf4j
 public class Producer {
-    private static final Logger LOGGER = LoggerFactory.getLogger(Producer.class);
 
-    @Value("${spring.kafka.topic.json}")
-    private String jsonTopic;
-    @Autowired
-    private KafkaTemplate<String, CashBack> kafkaTemplate;
-    public void sendMessage(CashBack cashBack) {
+	@Value("${spring.kafka.topic.microservic}")
+	private String mcCashBack;
 
-        ListenableFuture<SendResult<String, CashBack>> future =
-                kafkaTemplate.send(jsonTopic, cashBack );
+	@Autowired
+	private KafkaTemplate<String, CashBackDto> kafkaTemplate;
 
-        future.addCallback(new ListenableFutureCallback<SendResult<String,CashBack>>() {
+	public void sendMessage(CashBackDto cashBack) {
 
-            @Override
-            public void onSuccess(SendResult<String, CashBack> result) {
-                System.out.println("Massage send successed");;
-            }
-            @Override
-            public void onFailure(Throwable ex) {
-                System.out.println("Massage failure ");
-            }
-        });
-    }
+		ListenableFuture<SendResult<String, CashBackDto>> future =
+				kafkaTemplate.send(mcCashBack, cashBack);
+
+		future.addCallback(new ListenableFutureCallback<SendResult<String, CashBackDto>>() {
+
+			@Override
+			public void onSuccess(SendResult<String, CashBackDto> stringCashBackSendResult) {
+				log.info("sending massages={},{},{}", "to topic", cashBack, mcCashBack);
+			}
+
+			@Override
+			public void onFailure(Throwable ex) {
+				log.error("Unable to send massage = [" + cashBack + "] due to" + ex.getMessage());
+			}
+		});
+	}
 }

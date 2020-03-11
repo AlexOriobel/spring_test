@@ -11,21 +11,19 @@ import javax.persistence.*;
 @Data
 public class Client {
 
-    @Id // primary key
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(nullable = false)
+	private Long id;
 
-    @Column(name = "name", nullable = false)
-    private String name;
+	@Column(nullable = false)
+	private String name;
 
-    @Column(name = "phone", nullable = false)
-    private String phone;
+	@Column(nullable = false)
+	private String phone;
 
-    @Column(name = "email", nullable = false)
-    private String email;
-
-
+	@Column(nullable = false)
+	private String email;
 
 
 }

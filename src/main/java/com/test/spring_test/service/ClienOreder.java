@@ -18,7 +18,8 @@ public class ClienOreder {
         clientRepository.save(client);
     }
 
-    public void addNewOrder(OrderS orderS) {
+    public void addNewOrder(OrderS orderS)
+    {
         ordersRepository.save(orderS);
     }
 

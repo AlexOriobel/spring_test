@@ -19,12 +19,6 @@ public class SpringTestApplication {
 
     @Autowired
     private ClienOreder clienOreder;
-    @GetMapping("/")
-    public String index(final Model model) {
-        model.addAttribute("title", "Docker + Spring Boot");
-        model.addAttribute("msg", "Welcome to the docker container!");
-        return "index";
-    }
 
     public static void main(String[] args) {
         SpringApplication.run(SpringTestApplication.class, args);
@@ -38,18 +32,18 @@ public class SpringTestApplication {
 
     private void addTestOrder() {
 
-        Client client = new Client();
-        client.setPhone("Sevchik");
-        client.setName("Vasa");
-        client.setEmail("Pupkin");
-        clienOreder.addNewClient(client);
+        Client clienti = new Client();
+        clienti.setPhone("Sevchik");
+        clienti.setName("Vasa");
+        clienti.setEmail("Pupkin");
+        clienOreder.addNewClient(clienti);
 
-        OrderS orderS = new OrderS();
-        orderS.setData("20.20.20");
-        orderS.setOrders("Зубные палочки");
-        orderS.setCost(900000.0);
-        orderS.setClientOfOrders(client);
-        clienOreder.addNewOrder(orderS);
+        OrderS orderSi = new OrderS();
+        orderSi.setData("20.20.20");
+        orderSi.setOrd("Зубные палочки");
+        orderSi.setCost(900000.0);
+        orderSi.setClient(clienti);
+        clienOreder.addNewOrder(orderSi);
 
     }
 }

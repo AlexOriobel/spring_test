@@ -2,7 +2,7 @@
 spring:
    kafka:
      topic:
-        json: json
+        microservic: mcCashBack
      bootstrap-servers:
         localhost: 2181
      consumer:
@@ -10,8 +10,31 @@ spring:
         auto-offset-reset: earliest
         key-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
         value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+        properties:
+          spring:
+            json:
+              trusted:
+                packages: '*'
      producer:
         key-serializer: org.springframework.kafka.support.serializer.JsonSerializer
         value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
-        acks: 1
-        reteies: 3
+   datasource:
+        url: jdbc:postgresql://localhost:5432/postgres
+        username: postgres
+        password: postgres
+   jpa:
+      generate-ddl: true
+      show_sql: true
+      hibernate:
+            ddl-auto: create-drop
+      properties:
+            jdbc:
+              lob:
+                non_contextual_creation: true
+
+
+
+
+# create(автосоздание БД),
+# create-drop(каждый раз пересоздание БД)
+# update(обновление схемы, добавление новых таблиц колонок)

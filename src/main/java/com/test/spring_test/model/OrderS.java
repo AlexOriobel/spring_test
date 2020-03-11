@@ -13,23 +13,22 @@ import java.util.List;
 @Data
 public class OrderS implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id",nullable = false)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column
+	private Long id;
 
-    @Column(name = "data", nullable = false)
-    private String data;
+	@Column
+	private String data;
 
-    @Column(name = "orderName", nullable = false)
-    private String orders;
+	@Column
+	private String ord;
 
-    @Column(name = "cost", nullable = false)
-    private Double cost;
+	@Column
+	private Double cost;
 
-
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(columnDefinition = "client_id")
-    private Client clientOfOrders;
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn
+	private Client client;
 
 }
