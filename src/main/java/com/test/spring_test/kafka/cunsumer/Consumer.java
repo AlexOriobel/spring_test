@@ -33,7 +33,7 @@ public class Consumer {
 		if (cashBack.getOrderS()
 					.getCost() > 0) {
 			cashBack.setMoney(cashBack.getOrderS()
-									  .getCost() * 0.2);
+									  .getCost() * 0.02);
 			money.setMoney(cashBack.getMoney());
 			money.setPercent(2.0);
 			moneyRepository.save(money);

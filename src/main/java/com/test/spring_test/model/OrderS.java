@@ -11,6 +11,8 @@ import java.util.List;
 @Entity
 @Table
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class OrderS implements Serializable {
 
 	@Id

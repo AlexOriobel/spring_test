@@ -3,6 +3,7 @@ package com.test.spring_test.kafka.producer;
 import com.test.spring_test.dto.CashBackDto;
 import com.test.spring_test.model.CashBack;
 import com.test.spring_test.model.OrderS;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.json.JSONObject;
 import org.slf4j.Logger;
